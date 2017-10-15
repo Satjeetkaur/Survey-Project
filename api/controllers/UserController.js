@@ -9,9 +9,9 @@
 var bcrypt = require('bcrypt');
 module.exports = {
 
-  // This loads the sign-up page --> new.ejs
+  // This loads the sign-up page --> index.ejs
   'index': function(req, res) {
-    res.view();
+    //res.view();
   },
 
   Create: function(req, res, next) {
