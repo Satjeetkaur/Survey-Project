@@ -1,0 +1,53 @@
+
+<div class='container' data-id= "<%= surveyQuestions.Id %>" data-model="surveyQuestions" style="margin-top: 8%; border: 1px solid green;padding: 15px;" >
+	<h1>Fill your surveys</h1>
+<form action="/SurveyResponse/create" method="GET"  id="sign-up-form" class="form-signin">
+<input type="hidden" value="<%= surveyQuestions.SurveyId %>" name="SurveyId"/>
+<div class="container">
+	<h3><%= surveyQuestions.Id %></h3>
+	<table class='table'>
+		<tr>
+			<th>Questions</th>
+			<th>Agree</th>
+			<th>Disagree</th>
+		</tr>
+		
+		<tr>	
+			<td><%= surveyQuestions.Question1%></td>
+			<td><input type="radio" name="Answer1" value="Agree"/></td>
+			<td><input type="radio" name="Answer1" value="Disagree"/></td>
+		</tr> 
+
+		<tr>	
+			<td><%= surveyQuestions.Question2%></td>
+			<td><input type="radio" name="Answer2" value="Agree"/></td>
+			<td><input type="radio" name="Answer2" value="Disagree "/></td>
+		</tr> 
+
+		<tr>	
+			<td><%= surveyQuestions.Question3%></td>
+			<td><input type="radio" name="Answer3" value="AgreeAgree"/></td>
+			<td><input type="radio" name="Answer3" value="Disagree "/></td>
+		</tr> 
+
+		<tr>	
+			<td><%= surveyQuestions.Question4%></td>
+			<td><input type="radio" name="Answer4" value="Agree"/></td>
+			<td><input type="radio" name="Answer4" value="Disagree "/></td>
+		</tr> 
+
+		<tr>	
+			<td><%= surveyQuestions.Question5%></td>
+			<td><input type="radio" name="Answer5" value="Agree"/></td>
+			<td><input type="radio" name="Answer5" value="Disagree "/></td>
+		</tr> 
+
+	</table>
+</div>
+	<input type="submit" class="btn btn-sm btn-danger" value="Submit"/>
+				<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+	
+</form>
+
+</div>
+		

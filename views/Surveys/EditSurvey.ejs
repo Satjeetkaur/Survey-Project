@@ -1,0 +1,40 @@
+<div class="container" style="margin-top: 8%; border: 1px solid green;padding: 15px;" >
+	<h3>Available Surveys</h3>
+	<table class='table'>
+		<tr>
+			
+			<th>Title</th>
+			<th>Description</th>
+			<th>Created Date</th>
+			<th>Expires On</th>
+			<th>Created By</th>
+			<th colspan="2">Actions</th>
+		</tr>
+		
+
+		<% _.each(surveys, function(surveys) { %>
+		<tr data-id="<%= surveys.Id %>" data-model="surveys">
+			
+		
+			
+			<td><%= surveys.Title %></td>
+			<td><%= surveys.Description %></td>
+			<td><%= surveys.CreatedDate %></td>
+			<td><%= surveys.ExpiresOn %></td>
+			<td><%= surveys.CreatedBy %></td>
+		<td><a href="/surveys/UpdateSurvey/?Id=<%= surveys.Id %>">Update</a>
+		</td>
+		<td>	<a href="/Surveys/destroy/?Id=<%= surveys.Id %>">Delete</a>
+</td>
+		
+			
+			
+		</tr> 
+		<tr>
+		
+
+		</tr>
+
+		<% }) %>
+	</table>
+</div>

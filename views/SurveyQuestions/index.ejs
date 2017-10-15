@@ -1,0 +1,35 @@
+<form action="/SurveyQuestions/create" method="GET" style="margin-top: 8%; margin-left: 30%;margin-right: 30%;border: 1px solid green;padding: 15px;" id="sign-up-form" class="form-signin">
+	<h2 class="form-signin-heading" style="margin-top:0px">Create Survey Questions</h2>
+
+
+	<div class="control-group">
+	<input type="text" class="form-control" placeholder="Survey ID" name="SurveyId">
+	</div>
+
+	<div class="control-group">
+	<input type="text" class="form-control" placeholder="Question 1" name="Question1">
+	</div>
+	
+	<div class="control-group">
+	<input type="text" class="form-control" placeholder="Question 2" name="Question2">
+	</div>
+	
+	<div class="control-group">
+	<input type="text" class="form-control" placeholder="Question 3" name="Question3">
+	</div>
+	
+	<div class="control-group">
+	<input type="text" class="form-control" placeholder="Question 4" name="Question4">
+	</div>
+	
+	<div class="control-group">
+	<input type="text" class="form-control" placeholder="Question 5" name="Question5">
+	</div>
+
+	
+	<input type="submit" class="btn btn-lg btn-primary btn-block" value="Save"/>
+	<a href="/SurveyQuestions/EditQuestions/">Survey Questions</a>
+	<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+
+	
+</form>

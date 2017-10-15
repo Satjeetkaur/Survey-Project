@@ -1,0 +1,36 @@
+<div class="container" style="margin-top:5%">
+	<h3>Details of users</h3>
+	<table class='table'>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Title</th>
+			<th>Email</th>
+			<th></th>
+		</tr>
+		
+
+		<% _.each(users, function(user) { %>
+		<tr data-id="<%= user.id %>" data-model="user">
+			<!--<% if (user.online) { %>
+				<td><img src="/images/icon-online.png"></td>
+			<% } else { %>
+				<td> <img src="/images/icon-offline.png"></td>
+			<% } %>-->
+			<% if (!user.admin) { %>
+			<td><%= user.id %></td>
+			<td><%= user.userName %></td>
+			<td><%= user.title %></td>
+			<td><%= user.email %></td>
+			<td><form action="/user/destroy/<%= user.id %>" method="POST">
+				<input type="hidden" name="_method" value="delete"/>
+				<input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
+				<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+			</form></td>
+
+			<% } %>	
+		</tr> 
+
+		<% }) %>
+	</table>
+</div>

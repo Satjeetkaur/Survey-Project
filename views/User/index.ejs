@@ -1,0 +1,28 @@
+<form action="/User/create" method="GET" style="margin-top: 8%; margin-left: 30%;margin-right: 30%;border: 1px solid green;padding: 15px;" id="sign-up-form" class="form-signin">
+	<h2 class="form-signin-heading" style="margin-top:0px">Create an account</h2>
+
+
+	<div class="control-group">
+	<input type="text" class="form-control" placeholder="your name" name="userName">
+	</div>
+
+	<div class="control-group">
+	<input type="text" class="form-control" placeholder="your title" name="title">
+	</div>
+	
+	<div class="control-group">
+	<input type="text" class="form-control" placeholder="email address" name="email">
+	</div>
+
+	<div class="control-group">
+	<input type="password" class="form-control" placeholder="password" name="password" id="password">
+	</div>
+
+	<div class="control-group">
+	<input type="password" class="form-control" placeholder="password confirmation" name="confirmation">
+	<br />
+	</div>
+
+	<input type="submit" class="btn btn-lg btn-primary btn-block" value="Create Account"/>
+	<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+</form>

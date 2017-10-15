@@ -1,0 +1,36 @@
+<div class="container" style="margin-top: 8%; border: 1px solid green;padding: 15px;" >
+	<h3>Update Questions Details</h3>
+	<form action="/SurveyQuestions/update/" method="POST">
+	<input type="hidden" name="Id" value="<%= surveyQuestions.Id %>"/>
+	<table class='table'>
+		<tr>
+			<th>Survey Id</th><td><input type="text" value="<%= surveyQuestions.SurveyId %>" name="SurveyId"/></td>
+		</tr>
+		<tr>
+			<th>Question 1</th><td><input type="text" value="<%= surveyQuestions.Question1 %>" name="Question1"/></td>
+		</tr>
+		<tr>
+			<th>Question 2</th><td><input type="text" value="<%= surveyQuestions.Question2 %>" name="Question2"/></td>
+		</tr>
+		<tr>
+			<th>Question 3</th><td><input type="text" value="<%= surveyQuestions.Question3 %>" name="Question3"/></td>
+		</tr>
+		<tr>
+			<th>Question 4</th><td><input type="text" value="<%= surveyQuestions.Question4 %>" name="Question4"/></td>
+		</tr>
+		<tr>
+			<th>Question 5</th><td><input type="text" value="<%= surveyQuestions.Question5 %>" name="Question5"/></td>
+		
+		</tr>
+		<tr>		
+		<td>
+				
+				<input type="submit" class="btn btn-sm btn-danger" value="Update"/>
+				<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+		</form></td>
+			
+		</tr> 
+
+		
+	</table>
+</div>
