@@ -46,7 +46,7 @@ MysqlServer: {
     user: 'root', //optional
     password: 'root', //optional
     database: 'Assessment3_2017' //optional
-  }
+  },
 
   /***************************************************************************
   *                                                                          *
