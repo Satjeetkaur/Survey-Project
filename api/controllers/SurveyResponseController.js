@@ -17,7 +17,7 @@ module.exports = {
           err: err
         }
       // If error redirect back to SurveyQuestions/index
-        return res.redirect('/SurveyQuestions/index');
+        return res.redirect('/SurveyQuestions/index.ejs');
       }
 
        // Log user in
@@ -29,7 +29,7 @@ module.exports = {
 
       sails.log('Wow, there are %d users named Finn.  Check it out:', req.session.authenticated);
       
-     res.redirect('/Surveys/ViewSurvey/');
+     res.redirect('/Surveys/ViewSurvey.ejs/');
   
     });
   },

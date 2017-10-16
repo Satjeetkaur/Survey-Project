@@ -10,7 +10,7 @@ var bcrypt = require('bcrypt');
 module.exports = {
 
 	'new': function(req, res) {
-		res.view('Session/new');
+		res.view('Session/new.ejs');
 	},
 
 	create: function(req, res, next) {
@@ -31,7 +31,7 @@ module.exports = {
 				err: usernamePasswordRequiredError
 			}
 
-			res.redirect('/Session/new');
+			res.redirect('/Session/new.ejs');
 			return;
 		}
 
@@ -50,7 +50,7 @@ module.exports = {
 				req.session.flash = {
 					err: noAccountError
 				}
-				res.redirect('/Session/new');
+				res.redirect('/Session/new.ejs');
 				return;
 			}
 
@@ -67,7 +67,7 @@ module.exports = {
 					req.session.flash = {
 						err: usernamePasswordMismatchError
 					}
-					res.redirect('/Session/new');
+					res.redirect('/Session/new.ejs');
 					return;
 				}
 
@@ -96,7 +96,7 @@ module.exports = {
 					}
 
 					//Redirect to their profile page (e.g. /views/user/show.ejs)
-					res.redirect('/User/ViewRecord/' + user.id);
+					res.redirect('/User/ViewRecord.ejs/' + user.id);
 				//});
 			});
 		});
@@ -127,7 +127,7 @@ module.exports = {
 					req.session.destroy();
 
 					// Redirect the browser to the sign-in screen
-					res.redirect('/Session/new');
+					res.redirect('/Session/new.ejs');
 				});
 			} else {
 
@@ -135,7 +135,7 @@ module.exports = {
 				req.session.destroy();
 
 				// Redirect the browser to the sign-in screen
-				res.redirect('/Session/new');
+				res.redirect('/Session/new.ejs');
 			}
 		});
 	}

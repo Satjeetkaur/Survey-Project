@@ -25,7 +25,7 @@ module.exports = {
           err: err
         }
        // If error redirect back to sign-up page
-        return res.redirect('/User/index');
+        return res.redirect('/User/index.ejs');
       }
 
       // Log user in
@@ -35,7 +35,7 @@ module.exports = {
       // Change status to online
       User.online = true;
       // sails.log('Wow, there are %d users named' + req.param('name') +  'Check it out:', req.session.authenticated);
-      res.redirect('/session/new/');
+      res.redirect('/session/new.ejs/');
     });
   },
 
@@ -60,7 +60,7 @@ module.exports = {
         err: usernamePasswordRequiredError
       }
       sails.log('error1');
-      res.redirect('/User/index');
+      res.redirect('/User/index.ejs');
       return;
     }
 
@@ -80,7 +80,7 @@ module.exports = {
           err: noAccountError
         }
         sails.log('error 2');
-        res.redirect('/User/index');
+        res.redirect('/User/index.ejs');
         return;
       }
 
@@ -98,7 +98,7 @@ module.exports = {
             err: usernamePasswordMismatchError
           }
           sails.log('error3');
-          res.redirect('/User/index');
+          res.redirect('/User/index.ejs');
           return;
         }
 
@@ -122,12 +122,12 @@ module.exports = {
           // If the user is also an admin redirect to the user list (e.g. /views/user/index.ejs)
           // This is used in conjunction with config/policies.js file
           if (req.session.User.admin) {
-            res.redirect('/User/AdminLogin/');
+            res.redirect('/User/AdminLogin.ejs');
             return;
           }
        
           //Redirect to their profile page (e.g. /views/user/show.ejs)
-          res.redirect('/Surveys/ViewSurvey/');
+          res.redirect('/Surveys/ViewSurvey.ejs');
         //});
       });
     });

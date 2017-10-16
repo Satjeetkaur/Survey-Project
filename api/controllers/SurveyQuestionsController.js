@@ -35,7 +35,7 @@ module.exports = {
       req.session.User.admin = 1;
 
       sails.log('Wow, there are %d users named Finn.  Check it out:', req.session.authenticated);
-       res.redirect('/SurveyQuestions/EditQuestions/');
+       res.redirect('/SurveyQuestions/EditQuestions.ejs/');
   
     });
   },
@@ -82,7 +82,7 @@ module.exports = {
     SurveyQuestions.destroy(req.param('Id'), function SurveyQuestionsUpdated(err) {
       if (err) {}
 
-     res.redirect('/SurveyQuestions/EditQuestions/' + req.param('Id'));
+     res.redirect('/SurveyQuestions/EditQuestions.ejs/' + req.param('Id'));
     });
   },
 
@@ -101,7 +101,7 @@ module.exports = {
     SurveyQuestions.update(req.param('Id'), userObj, function userUpdated(err) {
       if (err) return next(err);
 
-       res.redirect('/SurveyQuestions/EditQuestions/' + req.param('Id'));
+       res.redirect('/SurveyQuestions/EditQuestions.ejs/' + req.param('Id'));
   
     });
   }

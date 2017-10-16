@@ -19,7 +19,7 @@ module.exports = {
           err: err
         }
         // If error redirect back to /Surveys/index
-        return res.redirect('/Surveys/index');
+        return res.redirect('/Surveys/index.ejs');
       }
 
       // Log user in
@@ -28,7 +28,7 @@ module.exports = {
       req.session.User = user;
 
       req.session.User.admin = 1;
-      res.redirect('/Surveys/EditSurvey/');
+      res.redirect('/Surveys/EditSurvey.ejs');
   
     });
   },
@@ -63,7 +63,7 @@ module.exports = {
     Surveys.destroy(req.param('Id'), function surveysUpdated(err) {
       if (err) {}
 
-     res.redirect('/surveys/EditSurvey/' + req.param('Id'));
+     res.redirect('/surveys/EditSurvey.ejs/' + req.param('Id'));
     });
   },
 
@@ -82,7 +82,7 @@ module.exports = {
       Surveys.update(req.param('Id'), userObj, function userUpdated(err) {
       if (err) return next(err);
 
-       res.redirect('/surveys/EditSurvey/' + req.param('Id'));
+       res.redirect('/surveys/EditSurvey.ejs/' + req.param('Id'));
   
     });
   },
