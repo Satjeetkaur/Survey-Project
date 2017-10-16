@@ -46,7 +46,7 @@ MysqlServer: {
     user: 'root', //optional
     password: 'root', //optional
     database: 'Assessment3_2017' //optional
-  }
+  },
 
   /***************************************************************************
   *                                                                          *
@@ -74,11 +74,11 @@ MysqlServer: {
   *                                                                          *
   *                                                                          *
   ***************************************************************************/
- /* heroku_postgres: {
+  heroku_postgres: {
     adapter: 'sails-postgresql',
     url: process.env.DATABASE_URL, // Automatically set by HeroKu
     ssl: false
- }*/
+ }
 
 
   /***************************************************************************

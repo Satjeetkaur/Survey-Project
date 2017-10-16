@@ -104,9 +104,9 @@ module.exports = {
 
 	destroy: function(req, res, next) {
 
-		User.findOne(req.param('id'), function foundUser(err, user) {
+		User.findOne(req.param('Id'), function foundUser(err, user) {
 
-			var userId = req.param('id');
+			var userId = req.param('Id');
 
 			if (user) {
 				// The user is "logging out" (e.g. destroying the session) so change the online attribute to false.

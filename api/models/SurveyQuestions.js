@@ -13,10 +13,7 @@ module.exports = {
 
   attributes: {
 
-    Id: {
-      type: 'integer',  
-    },
-
+   
     SurveyId: {
       type: 'integer',
       required: true,   
