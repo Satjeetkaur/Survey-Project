@@ -6,16 +6,15 @@
  */
 
 
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt'); // For passowrd security 
 module.exports = {
 
   // This loads the sign-up page --> index.ejs
   'index': function(req, res) {
-    //res.view();
+    res.view();
   },
 
   Create: function(req, res, next) {
-
     // Create a User with the params sent from 
     // the sign-up form --> new.ejs
     User.create(req.params.all(), function userCreated(err, user) {
@@ -25,38 +24,27 @@ module.exports = {
         req.session.flash = {
           err: err
         }
-
-        // If error redirect back to sign-up page
+       // If error redirect back to sign-up page
         return res.redirect('/User/index');
       }
 
       // Log user in
-      req.session.authenticated = true;
-      req.session.User = user;
+     req.session.authenticated = false;
+     req.session.User = user;
 
       // Change status to online
       User.online = true;
-       sails.log('Wow, there are %d users named' + req.param('name') +  'Check it out:', req.session.authenticated);
-       res.redirect('/User/ViewRecord/' + user.id);
-      
-     
-
+      // sails.log('Wow, there are %d users named' + req.param('name') +  'Check it out:', req.session.authenticated);
+      res.redirect('/session/new/');
     });
   },
 
-  // render the profile view (e.g. /views/show.ejs)
- 
-// render the profile view (e.g. /views/show.ejs)
-  AdminLogin: function(req, res, next) {
-    User.findOne(req.param('id'), function foundUser(err, user) {
-      if (err) return next(err);
-      if (!user) return next();
-      res.view({
-        user: user
-      });
-    });
+// render the  view (e.g. /Users/AdminLogin.ejs)
+ AdminLogin: function(req, res) {
+    res.view();
   },
 
+// render the  view (e.g. /Users/LoginSuccess.ejs)
   LoginSuccess: function(req, res, next) {
     if (!req.param('email') || !req.param('password')) {
       // return next({err: ["Password doesn't match password confirmation."]});
@@ -124,9 +112,9 @@ module.exports = {
           if (err) return next(err);
 
           // Inform other sockets (e.g. connected sockets that are subscribed) that this user is now logged in
-          User.publishUpdate(user.id, { 
+          User.publishUpdate(user.Id, { 
             loggedIn: true,
-            id: user.id,
+            Id: user.Id,
             name: user.userName,
             action: ' has logged in.'
           });
@@ -134,10 +122,10 @@ module.exports = {
           // If the user is also an admin redirect to the user list (e.g. /views/user/index.ejs)
           // This is used in conjunction with config/policies.js file
           if (req.session.User.admin) {
-            res.redirect('/User/AdminLogin/' + user.id);
+            res.redirect('/User/AdminLogin/');
             return;
           }
-
+       
           //Redirect to their profile page (e.g. /views/user/show.ejs)
           res.redirect('/Surveys/ViewSurvey/');
         //});
@@ -145,24 +133,10 @@ module.exports = {
     });
   },
 
-
-  index22: function(req, res, next) {
-
-    // Get an array of all users in the User collection(e.g. table)
-    User.find(function foundUsers(err, users) {
-      if (err) return next(err);
-      // pass the array down to the /views/index.ejs page
-      res.view({
-        users: users
-      });
-    });
-  },
-
-  // render the edit view (e.g. /views/edit.ejs)
+// render the edit view (e.g. /Users/UpdateRecord.ejs)
   UpdateRecord: function(req, res, next) {
-
     // Find the user from the id passed in via params
-    User.findOne(req.param('id'), function foundUser(err, user) {
+    User.findOne(req.param('Id'), function foundUser(err, user) {
       if (err) return next(err);
       if (!user) return next('User doesn\'t exist.');
 
@@ -172,7 +146,7 @@ module.exports = {
     });
   },
 
-  // process the info from edit view
+// Update the infrormation in User table
   update: function(req, res, next) {
 
     if (req.session.User.admin) {
@@ -190,33 +164,34 @@ module.exports = {
       }
     }
 
-    User.update(req.param('id'), userObj, function userUpdated(err) {
+    User.update(req.param('Id'), userObj, function userUpdated(err) {
       if (err) {
-        return res.redirect('/user/edit/' + req.param('id'));
+        return res.redirect('/user/edit/' + req.param('Id'));
       }
 
-      res.redirect('/user/show/' + req.param('id'));
+      res.redirect('/user/show/' + req.param('Id'));
     });
   },
 
+// Delete the infrormation in User table if required 
   destroy: function(req, res, next) {
 
-    User.findOne(req.param('id'), function foundUser(err, user) {
+    User.findOne(req.param('Id'), function foundUser(err, user) {
       if (err) return next(err);
 
       if (!user) return next('User doesn\'t exist.');
 
-      User.destroy(req.param('id'), function userDestroyed(err) {
+      User.destroy(req.param('Id'), function userDestroyed(err) {
         if (err) return next(err);
 
         // Inform other sockets (e.g. connected sockets that are subscribed) that this user is now logged in
-        User.publishUpdate(user.id, {
+        User.publishUpdate(user.Id, {
           name: user.name,
           action: ' has been destroyed.'
         });
 
         // Let other sockets know that the user instance was destroyed.
-        User.publishDestroy(user.id);
+        User.publishDestroy(user.Id);
 
       });        
 

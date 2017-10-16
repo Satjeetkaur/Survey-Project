@@ -10,12 +10,8 @@
 			<th>Created By</th>
 			<th colspan="2">Actions</th>
 		</tr>
-		
-
 		<% _.each(surveys, function(surveys) { %>
 		<tr data-id="<%= surveys.Id %>" data-model="surveys">
-			
-		
 			<td><%= surveys.Id%></td>
 			<td><%= surveys.Title %></td>
 			<td><%= surveys.Description %></td>
@@ -26,11 +22,6 @@
 		</td>
 		
 		</tr> 
-		<tr>
-		
-
-		</tr>
-
 		<% }) %>
 	</table>
 </div>

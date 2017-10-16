@@ -1,5 +1,5 @@
 <div class="container" style="margin-top: 8%; border: 1px solid green;padding: 15px;" >
-	<h3>Available Surveys</h3>
+	<h3>Available Surveys outcome</h3>
 	<table class='table'>
 		<tr>
 			<th>Surveys Id</th>
@@ -8,25 +8,17 @@
 			<th>Question 3</th>
 			<th>Question 4</th>
 			<th>Question 5</th>
-			<th colspan="2">Actions</th>
+		
 		</tr>
-		
+		<% _.each(surveyResponse, function(surveyResponse) { %>
+		<tr data-id="<%= surveyResponse.SurveyId %>" data-model="surveyResponse">
 
-		<% _.each(surveyResponse1, function(surveyResponse1) { %>
-		<tr data-id="<%= surveyResponse1.SurveyId %>" data-model="surveyResponse1">
-
-
-			
-			<td><%= surveyResponse1.SurveyId%></td>
-			<td><%= surveyResponse1.Answer1 %></td>
-			<td><%= surveyResponse1.Answer2 %></td>
-			<td><%= surveyResponse1.Answer3 %></td>
-			<td><%= surveyResponse1.Answer4 %></td>
-			<td><%= surveyResponse1.Answer5 %></td>
-			
-		<td><a href="">View Questions</a>
-		</td>
-		
+		<td><%= surveyResponse.SurveyId%></td>
+			<td><%= surveyResponse.Answer1 %></td>
+			<td><%= surveyResponse.Answer2 %></td>
+			<td><%= surveyResponse.Answer3 %></td>
+			<td><%= surveyResponse.Answer4 %></td>
+			<td><%= surveyResponse.Answer5 %></td>
 		</tr> 
 		<tr>
 		

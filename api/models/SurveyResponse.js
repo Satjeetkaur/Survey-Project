@@ -1,5 +1,5 @@
 /**
- * User
+ * SurveyResponse
  *
  * @module      :: Model
  * @description :: A short summary of how this model works and what it represents.
@@ -40,9 +40,9 @@ module.exports = {
       required: true
     },
    
-  Answer5: {
+    Answer5: {
       type: 'string',
       required: true
-    },
+    }
   }
 };

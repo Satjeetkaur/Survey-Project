@@ -10,7 +10,6 @@
 			<th>Question 5</th>
 			<th colspan="2">Actions</th>
 		</tr>
-		
 
 		<% _.each(surveyQuestions, function(surveyQuestions) { %>
 		<tr data-id="<%= surveyQuestions.Id %>" data-model="surveyQuestions">
@@ -24,17 +23,11 @@
 			<td><%= surveyQuestions.Question5 %></td>
 		<td><a href="/SurveyQuestions/UpdateQuestions/?Id=<%= surveyQuestions.Id %>">Update</a>
 		</td>
-		<td>	<a href="/SurveyQuestions/destroy/?Id=<%= surveyQuestions.Id %>">Delete</a>
-</td>
-		
-			
-			
+
+		<td><a href="/SurveyQuestions/destroy/?Id=<%= surveyQuestions.Id %>">Delete</a>
+		</td>
 		</tr> 
-		<tr>
 		
-
-		</tr>
-
 		<% }) %>
 	</table>
 </div>

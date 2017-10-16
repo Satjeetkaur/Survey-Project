@@ -1,5 +1,5 @@
 
-<div class='container' data-id= "<%= user.id  %>" data-model="user" >
+<div class='container' data-id= "<%= user.Id  %>" data-model="user" >
 	<h1><%= user.userName %> </h1>
 	<% if (user.admin) { %>
 		<img src="/images/admin.png">admin
@@ -10,10 +10,9 @@
 	<hr>
 	<h3>contact: <%= user.email %> </h3>
 	
-	<a class="btn btn-medium btn-primary" href="/user/edit/<%= user.id %>">Edit</a>
+	<a class="btn btn-medium btn-primary" href="/user/edit/<%= user.Id %>">Edit</a>
 
 	<h1> Successfully Login </h1>
-
 	
 </div>
 

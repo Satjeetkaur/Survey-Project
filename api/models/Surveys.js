@@ -1,5 +1,5 @@
 /**
- * User
+ * Surveys
  *
  * @module      :: Model
  * @description :: A short summary of how this model works and what it represents.
@@ -13,9 +13,8 @@ module.exports = {
   autoUpdatedAt:false,
 
   attributes: {
- 	
-
-   Id: {
+ 
+    Id: {
       type: 'integer',
      
     },
@@ -43,8 +42,7 @@ module.exports = {
   	CreatedBy: {
       type: 'string',
       required: true
-    },
-
-
+    }
+    
   }
 };

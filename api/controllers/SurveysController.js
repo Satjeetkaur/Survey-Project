@@ -1,11 +1,9 @@
 /**
- * UsercomplaintController
+ * SurveyController
  *
  * @module    :: Controller
  * @description :: Contains logic for handling requests.
  */
-
-
 
 module.exports = {
 
@@ -14,16 +12,13 @@ module.exports = {
   },
 
   create: function(req, res, next) {
-
     Surveys.create(req.params.all(), function userCreated(err, user) {
-
      if (err) {
         console.log(err);
         req.session.flash = {
           err: err
         }
-
-        // If error redirect back to sign-up page
+        // If error redirect back to /Surveys/index
         return res.redirect('/Surveys/index');
       }
 
@@ -38,8 +33,9 @@ module.exports = {
     });
   },
 
- UpdateSurvey: function(req, res, next) {
-  // Get an array of all users in the User collection(e.g. table)
+//Redirect to /Survey/UpdateSurvey.ejs
+  UpdateSurvey: function(req, res, next) {
+     // Get an array of all Surveys
      Surveys.findOne(req.param('Id'), function foundsurveys(err,surveys) {
       if (err) return next(err);
       if (!surveys) return next('User doesn\'t exist.');
@@ -48,32 +44,30 @@ module.exports = {
         surveys: surveys
       });
     });
-  
   }, 
 
+//Redirect to /Survey/EditSurvey.ejs
   EditSurvey: function(req, res, next) {
-
-    // Get an array of all users in the User collection(e.g. table)
-    Surveys.find(function foundSurveys(err, surveys) {
+   // Get an array of all Surveys
+     Surveys.find(function foundSurveys(err, surveys) {
       if (err) return next(err);
-      // pass the array down to the /views/index.ejs page
+    
       res.view({
         surveys: surveys
       });
     });
   },
 
+//Delete information in Survey table
   destroy: function(req, res, next) {
-
     Surveys.destroy(req.param('Id'), function surveysUpdated(err) {
       if (err) {}
 
      res.redirect('/surveys/EditSurvey/' + req.param('Id'));
     });
-
   },
 
-  // process the info from edit view
+//Update information in Survey table
   update: function(req, res, next) {
     
       var userObj = {
@@ -84,9 +78,8 @@ module.exports = {
         ExpiresOn: req.param('ExpiresOn'),
         CreatedBy: req.param('CreatedBy'),
       }
-   
 
-    Surveys.update(req.param('Id'), userObj, function userUpdated(err) {
+      Surveys.update(req.param('Id'), userObj, function userUpdated(err) {
       if (err) return next(err);
 
        res.redirect('/surveys/EditSurvey/' + req.param('Id'));
@@ -94,18 +87,16 @@ module.exports = {
     });
   },
 
-
+//Redirect to /Survey/ViewSurvey.ejs
  ViewSurvey: function(req, res, next) {
     req.session.User.admin = 0;
      Surveys.find(function foundsurveys(err, surveys) {
       if (err) return next(err);
-      // pass the array down to the /views/index.ejs page
+     
       res.view({
         surveys: surveys
       });
     });
-  //sails.log('Found "%s"', finn.Title);
-  //return res.json(finn);
-              
   }
+  
 }

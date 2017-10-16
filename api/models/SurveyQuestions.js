@@ -1,6 +1,5 @@
 /**
- * User
- *
+ * SurveyQuestions
  * @module      :: Model
  * @description :: A short summary of how this model works and what it represents.
  *
@@ -15,15 +14,12 @@ module.exports = {
   attributes: {
 
     Id: {
-      type: 'integer',
-     
+      type: 'integer',  
     },
 
- 	
     SurveyId: {
       type: 'integer',
-      required: true,
-      
+      required: true,   
     },
 
   	Question1: {
@@ -49,6 +45,6 @@ module.exports = {
    Question5: {
       type: 'string',
       required: true
-    },
+    }
   }
 };

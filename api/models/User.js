@@ -52,9 +52,7 @@ module.exports = {
       delete obj._csrf;
       return obj;
     }
-
   },
-
 
   beforeValidation: function (values, next) {
     if (typeof values.admin !== 'undefined') {
